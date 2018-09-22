@@ -12,12 +12,14 @@ Master:
   JavaOpts: "-Xms3500m -Xmx3500m"
   ServiceType: ClusterIP
 Agent:
-  Image: adriagalin/jenkins-jnlp-slave
-  ImageTag: 1.4
+  Enabled: true
+  Image: jenkins/jnlp-slave
+  ImageTag: 3.10-1
+  Component: "jenkins-slave"
+  Privileged: false
   AlwaysPullImage: true
   volumes:
    - type: HostPath
-     volumeName: docker-sock
      hostPath: /var/run/docker.sock
      mountPath: /var/run/docker.sock
 Persistence:
